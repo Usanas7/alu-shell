@@ -4,4 +4,4 @@ clean_up='rm /var/run/myscript.pid; exit $?'
 
 echo $$ > "/var/run/myscript.pid"
 #signal
-trap 'echo "I hate the kill command!"' SIGTERM
+trap "echo 'I hate the kill command!'" SIGTERM
