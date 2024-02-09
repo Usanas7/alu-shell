@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-#i love you
-clean#!/bin/bash
 
 pidfile="/var/run/myscript.pid"
 
@@ -29,6 +27,4 @@ trap 'echo "I hate the kill command!"' SIGTERM
 
 # Display message on SIGINT signal
 trap 'echo "Y U no love me?!"' SIGINT
-_up='rm /var/run/myscript.pid; exit $?'
 
-echo $$ > "/var/run/myscript.pid"
