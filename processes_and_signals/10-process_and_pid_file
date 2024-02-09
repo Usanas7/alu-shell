@@ -1,5 +1,34 @@
 #!/usr/bin/env bash
 #i love you
-clean_up='rm /var/run/myscript.pid; exit $?'
+clean#!/bin/bash
+
+pidfile="/var/run/myscript.pid"
+
+# Function to handle cleanup
+cleanup() {
+    echo "Cleaning up and terminating script..."
+    rm -f "$pidfile"
+    exit 0
+}
+
+# Trap signals and call cleanup function
+trap 'cleanup' SIGQUIT SIGTERM
+
+# Display PID and create PID file
+echo $$ > "$pidfile"
+echo "PID: $$"
+
+# Display messages indefinitely
+while true; do
+    echo "To infinity and beyond..."
+    sleep 1
+done
+
+# Display message on SIGTERM signal
+trap 'echo "I hate the kill command!"' SIGTERM
+
+# Display message on SIGINT signal
+trap 'echo "Y U no love me?!"' SIGINT
+_up='rm /var/run/myscript.pid; exit $?'
 
 echo $$ > "/var/run/myscript.pid"
