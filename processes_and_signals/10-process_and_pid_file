@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 pidfile="/var/run/myscript.pid"
 
 # Function to handle cleanup
