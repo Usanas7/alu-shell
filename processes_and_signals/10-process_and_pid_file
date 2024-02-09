@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 pidfile="/var/run/myscript.pid"
 
@@ -10,7 +10,7 @@ cleanup() {
 }
 
 # Trap signals and call cleanup function
-trap 'cleanup' SIGQUIT SIGTERM
+trap cleanup SIGQUIT SIGTERM
 
 # Display PID and create PID file
 echo $$ > "$pidfile"
@@ -22,9 +22,11 @@ while true; do
     sleep 1
 done
 
-# Display message on SIGTERM signal
+# Additional trap statements for other signals
 trap 'echo "I hate the kill command!"' SIGTERM
-
-# Display message on SIGINT signal
 trap 'echo "Y U no love me?!"' SIGINT
+
+# Sleep indefinitely to keep the script running
+sleep infinity
+
 
